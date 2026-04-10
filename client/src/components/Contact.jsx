@@ -26,7 +26,8 @@ const Contact = () => {
     setStatus({ type: '', message: '' });
 
     try {
-      await axios.post('/api/contact', formData);
+      const apiUrl = process.env.REACT_APP_API_URL || '';
+      await axios.post(`${apiUrl}/api/contact`, formData);
       setStatus({ type: 'success', message: 'Message sent successfully! I\'ll get back to you soon.' });
       setFormData({ name: '', email: '', service: '', message: '' });
       setShowSuccess(true);
